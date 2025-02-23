@@ -47,10 +47,11 @@ The creation of 3D assets is a very time consuming process that requires a large
 
 One of the main technologies that will be used is called Flash3D, which  is a model that converts a single image to GSPLAT which is is a differentiable rasterization of 3D Gaussians. Another technology that involves image to 3D is called Splatt3R which is a zero-shot gaussian splatting from image pairs. To create images from text, Deepfloyd will be used which is a low cost diffusion model. Finally, another technology that is involved is known as ControlNet which can be combined with a stable diffusion model to add extra controls on the stable diffusion process such as the ability to specify human poses, copying the composition from another image, and to turn scribble into a professional image.
 
+
 \section{Technical Approach}
 
 
-Our approach involves taking a text prompt as input running it through a diffusion model to produce a single image, using a synthesizer to create multiple views of the image and then putting those images through a Gaussian splat model to reconstruct a 3D model.
+Our approach involves taking a text prompt as input running it through a diffusion model to produce a single image, using a synthesizer to create multiple views of the image or a single image and then putting those image(s) through a Gaussian splat model to reconstruct a 3D model.
 
 \begin{enumerate}
 \item Text prompt into Diffusion Model
@@ -58,10 +59,12 @@ Our approach involves taking a text prompt as input running it through a diffusi
 \item Image into Canny or Depth Map Extractor
 \item Canny/Depth Map
 \item Canny/Depth Map into Multi-view Synthesizer
-\item Multiple Images
+\item Multiple Images or single image
 \item Gaussian Splatting Model
 \item 3D Model
 \end{enumerate}
+
+The method that we will be using for 3D image construction is knpwn as Flash3D. The reason this model will be used is because only one image is required, and also it is extremely efficient to train compared to other methods. Only one A6000 GPU with 48GB of VRAM is required for training, or 2 RTX 3090 GB with combined 48 GB VRAM. Inference is also correspondingly efficient with resource usage.
 
 \section{Experiments}
 
@@ -85,6 +88,8 @@ The pipeline will be created and 3D models will be generated. This pipeline will
 	\href{https://arxiv.org/pdf/2302.05543}{\nolinkurl{https://arxiv.org/pdf/2302.05543}}
 	\item DeepFloyd IF, DeepFloyd Lab at StabilityAI. 
 	\href{https://github.com/deep-floyd/IF}{\nolinkurl{https://github.com/deep-floyd/IF}}
+	\item Flash3D: Feed-Forward Generalisable 3D Scene Reconstruction from a Single Image
+	\href{https://arxiv.org/abs/2406.04343}{\nolinkurl{https://arxiv.org/abs/2406.04343}}
 
 	
 \end{enumerate}
