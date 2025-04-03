@@ -176,3 +176,8 @@ dataset/
 *.ckpt
 *.pth
 *.ply
+
+build/
+diff_gaussian_rasterization.egg-info/
+dist/
+.idea/

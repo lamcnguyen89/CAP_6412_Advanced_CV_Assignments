@@ -23,9 +23,70 @@ And the corresponding rendered depth:
 
 ## Quick Run
 ### 0. Setup the environment
-(1) Create a new conda environment and install [Pytorch3D](https://github.com/facebookresearch/pytorch3d) (for mesh rendering) and [diff-gaussian-rasterization-w-depth](https://github.com/JonathonLuiten/diff-gaussian-rasterization-w-depth) (for 3DGS rendering with depth) accordingly. Other requirements are specified in \<requirements.txt\>. 
+1. Make sure Cuda ToolKit 11.8 is installed. For example in Ubuntu 22.04:
 
-(2) Download pretrained weights in \<checkpoints\> (for image inpainting and depth estimation). See \<checkpoints/README.md\> for instructions.
+```
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
+sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda-repo-ubuntu2204-11-8-local_11.8.0-520.61.05-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2204-11-8-local_11.8.0-520.61.05-1_amd64.deb
+sudo cp /var/cuda-repo-ubuntu2204-11-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get -y install cuda
+
+```
+
+2. Add new cuda to your BashRC file:
+
+First open Bashrc file
+```
+sudo nano ~/.bashrc
+```
+Next add the lines at the bottom of the file
+```
+export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+```
+Then Save and Exit
+```
+Ctrl +s
+Ctrl +x
+```
+
+Reboot computer
+
+
+2. Create a new conda environment. For Example:
+```
+conda create --name pano2room python=3.9
+```
+3. Install Pytorch 2.01:
+
+```
+conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia
+```
+4. Install Pytorch3D [Pytorch3D](https://github.com/facebookresearch/pytorch3d) (for mesh rendering):
+
+```
+conda install -c fvcore -c iopath -c conda-forge fvcore iopath
+conda install pytorch3d -c pytorch3d
+```
+
+5. [diff-gaussian-rasterization-w-depth](https://github.com/JonathonLuiten/diff-gaussian-rasterization-w-depth) (for 3DGS rendering with depth) accordingly. 
+
+```
+cd diff-gaussian-rasterization-w-depth
+python setup.py install
+pip install .
+```
+
+6. Finally install Requirements.txt :
+
+```
+pip install -r requirements.txt
+```
+
+7. Download pretrained weights in \<checkpoints\> (for image inpainting and depth estimation). See \<checkpoints/README.md\> for instructions.
 
 ### 1. Run Demo
 ```
