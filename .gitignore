@@ -173,8 +173,6 @@ cython_debug/
 # ML Stuff to Ignore
 datasets/
 dataset/
-checkpoint/
-checkpoints/
 *.ckpt
 *.pth
 *.ply
