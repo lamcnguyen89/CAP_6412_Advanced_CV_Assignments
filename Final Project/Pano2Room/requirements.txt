@@ -1,5 +1,3 @@
-git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
-git+https://github.com/camenduru/simple-knn
 absl-py==2.0.0
 accelerate==0.33.0
 addict==2.4.0
@@ -194,6 +192,7 @@ scikit-learn==1.3.1
 scipy==1.10.1
 shapely==2.0.1
 #simple-knn
+git+https://github.com/camenduru/simple-knn
 six==1.16.0
 sniffio==1.3.0
 stack-data==0.6.3
@@ -211,6 +210,7 @@ tifffile==2023.7.10
 #timm==0.8.10.dev0
 timm
 #tinycudann==1.7
+git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
 #tokenizers==0.14.1
 tokenizers
 tomli==2.0.1
