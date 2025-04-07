@@ -643,7 +643,7 @@ for (path, dirnames, filenames) in os.walk(Input_Directory):
 
 # Loop through all images in the folder and run inference.
 for idx,filePath in enumerate(files): 
-
+    print(f"Progress: {idx} of {len(files)} Images ")
     splitFileName = re.split('/|\.', filePath)
     imageFileName = splitFileName[2]
 
