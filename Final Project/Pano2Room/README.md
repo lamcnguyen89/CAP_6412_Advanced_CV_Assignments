@@ -114,9 +114,9 @@ Then by running step 1., the SDFT weights will be automatically loaded.
 
 Notice this step needs to be performed for each new panorama. If you don't want to train SDFT for a new panorama, delete previous \<output/SDFT_weights\> if exists.
 
-## Try on your own panorama
+## Try on your own panoramas
 
-Simply replace \<input/input_panorama.png\> with your own panorama and run the previous steps!
+You can convert batches of images to 3D models. Just paste them into \<input/Input_Images\> folder
 
 #### Camera Trajectory
 We provide a camera trajectory at \<input/Camera_Trajectory\> as in the above demo. Each file consists of [R|T] 4*4 matrix of a frame. Feel free to use more camera trajectories.
