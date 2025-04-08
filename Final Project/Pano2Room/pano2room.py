@@ -638,7 +638,7 @@ Path(Input_Directory).mkdir(parents=True, exist_ok=True)
 
 for (path, dirnames, filenames) in os.walk(Input_Directory):
     folders.extend(os.path.join(path, name) for name in dirnames)
-    files.extend(os.path.join(path, name) for name in filenames)
+    files.extend(os.path.join(path, name) for name in filenames if name.endswith('.png'))
 
 
 # Loop through all images in the folder and run inference.
